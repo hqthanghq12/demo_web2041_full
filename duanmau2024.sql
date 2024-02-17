@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 11, 2024 lúc 07:46 AM
+-- Thời gian đã tạo: Th2 17, 2024 lúc 07:51 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
@@ -74,6 +74,26 @@ INSERT INTO `danhmuc` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `danhmuctintuc`
+--
+
+CREATE TABLE `danhmuctintuc` (
+  `id_danhmuc` int(11) NOT NULL,
+  `ten_danhmuc` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `danhmuctintuc`
+--
+
+INSERT INTO `danhmuctintuc` (`id_danhmuc`, `ten_danhmuc`) VALUES
+(1, 'Tin Công Nghệ'),
+(2, 'Tin Khuyến Mại'),
+(3, 'Chính Sách Bán Hàng');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `sanpham`
 --
 
@@ -124,6 +144,28 @@ INSERT INTO `taikhoan` (`id`, `user`, `pass`, `email`, `address`, `tel`, `role`)
 (2, 'admin', 'admin', '', '', '', 1),
 (3, 'hihi', '12345', 'trungnt173@gmail.com', '', '', 0);
 
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tintuc`
+--
+
+CREATE TABLE `tintuc` (
+  `id` int(11) NOT NULL,
+  `tieu_de` varchar(255) NOT NULL,
+  `noi_dung` varchar(255) NOT NULL,
+  `hinh_anh` varchar(255) NOT NULL,
+  `id_danh_muc` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `tintuc`
+--
+
+INSERT INTO `tintuc` (`id`, `tieu_de`, `noi_dung`, `hinh_anh`, `id_danh_muc`) VALUES
+(1, 'OpenAI giới thiệu Sora, AI tạo video chỉ bằng văn bản', 'OpenAI giới thiệu Sora, AI tạo video chỉ bằng văn bản: chất lượng quá chân thực đến mức làm chấn động giới dựng phim', 'iphone13.jpg', 1),
+(3, 'qqqq', 'qqqqq', '1.png', 1);
+
 --
 -- Chỉ mục cho các bảng đã đổ
 --
@@ -141,6 +183,12 @@ ALTER TABLE `danhmuc`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `danhmuctintuc`
+--
+ALTER TABLE `danhmuctintuc`
+  ADD PRIMARY KEY (`id_danhmuc`);
+
+--
 -- Chỉ mục cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
@@ -151,6 +199,12 @@ ALTER TABLE `sanpham`
 -- Chỉ mục cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `tintuc`
+--
+ALTER TABLE `tintuc`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -170,6 +224,12 @@ ALTER TABLE `danhmuc`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT cho bảng `danhmuctintuc`
+--
+ALTER TABLE `danhmuctintuc`
+  MODIFY `id_danhmuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
@@ -180,6 +240,12 @@ ALTER TABLE `sanpham`
 --
 ALTER TABLE `taikhoan`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `tintuc`
+--
+ALTER TABLE `tintuc`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
